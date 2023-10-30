@@ -51,6 +51,29 @@ func testDataStructures() {
 	queue.Enqueue(Item{Id: "6"})
 	fmt.Printf("Added item 6, len: %d\n", queue.Len())
 
+	fmt.Println("")
+
+	list := &LinkedList{}
+
+	list.Append(1)
+	list.Print()
+	list.Append(2)
+	list.Print()
+	list.Append(4)
+	list.Print()
+	list.Remove(4)
+	list.Print()
+	list.Append(3)
+	list.Print()
+	list.Append(5)
+	list.Print()
+	list.Remove(1)
+	list.Print()
+	list.Append(4)
+	list.Print()
+	list.Remove(3)
+	list.Print()
+
 	// Create a custom data structure, like a linked list or a hash table.
 	// Implement a binary search tree and perform basic operations like insertion, deletion, and searching.
 }
@@ -104,93 +127,3 @@ func (q *Queue) Dequeue() Item {
 func (q *Queue) Len() int {
 	return len(*q)
 }
-
-//type iStack interface {
-//	Push(item Item)
-//	Pop() Item
-//	Len() int
-//}
-//
-//type Stack struct {
-//	current *StackNode
-//	count   int
-//}
-//
-//type StackNode struct {
-//	value    Item
-//	previous *StackNode
-//}
-//
-//func (s *Stack) Push(item Item) {
-//	s.current = &StackNode{value: item, previous: s.current}
-//	s.count++
-//}
-//
-//func (s *Stack) Pop() Item {
-//	if s.count == 0 {
-//		return Item{}
-//	}
-//
-//	removedNode := s.current.value
-//
-//	s.current = s.current.previous
-//	s.count--
-//
-//	return removedNode
-//}
-//
-//func (s *Stack) Len() int {
-//	return s.count
-//}
-//
-//type iQueue interface {
-//	Enqueue(item Item)
-//	Dequeue() Item
-//	Len() int
-//}
-//type Queue struct {
-//	endQ   *QueueNode // take from end
-//	startQ *QueueNode // insert to start
-//	count  int
-//}
-//
-//type QueueNode struct {
-//	value Item
-//	front *QueueNode
-//	back  *QueueNode
-//}
-//
-//func (q *Queue) Enqueue(item Item) {
-//	qNode := &QueueNode{value: item, front: q.startQ}
-//	if q.startQ != nil {
-//		q.startQ.back = qNode
-//	}
-//
-//	q.startQ = qNode
-//
-//	if q.endQ == nil {
-//		q.endQ = q.startQ
-//	}
-//
-//	q.count++
-//}
-//
-//func (q *Queue) Dequeue() Item {
-//	if q.count == 0 {
-//		return Item{}
-//	}
-//
-//	res := q.endQ.value
-//	q.endQ = q.endQ.back
-//
-//	if q.count == 1 {
-//		q.startQ = nil
-//	}
-//
-//	q.count--
-//	return res
-//}
-//
-//func (q *Queue) Len() int {
-//	return q.count
-//}
